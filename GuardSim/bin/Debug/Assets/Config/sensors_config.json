@@ -1,0 +1,163 @@
+{
+  "Intruders": 0,
+  "Radars": [
+    {
+      "SensorId": "RADAR_1",
+      "SensorName": "Радар #1 (СЗ)",
+      "PositionX": 350.0,
+      "PositionY": 450.0,
+      "DetectionRange": 200.0,
+      "NoiseLevel": 2.0,
+      "BeamWidth": 10.0
+    },
+    {
+      "SensorId": "RADAR_3",
+      "SensorName": "Радар #3 (Ю)",
+      "PositionX": 737.19821162444123,
+      "PositionY": 731.67958271236921,
+      "DetectionRange": 202.0,
+      "NoiseLevel": 2.5,
+      "BeamWidth": 10.0
+    },
+    {
+      "SensorId": "RADAR_4",
+      "SensorName": "Радар #4 (С)",
+      "PositionX": 750.0,
+      "PositionY": 300.0,
+      "DetectionRange": 180.0,
+      "NoiseLevel": 3.0,
+      "BeamWidth": 10.0
+    },
+    {
+      "SensorId": "RADAR_ED_1",
+      "SensorName": "Радар (ред.) 2",
+      "PositionX": 1190.1043219076007,
+      "PositionY": 447.00223546944841,
+      "DetectionRange": 220.0,
+      "NoiseLevel": 2.0,
+      "BeamWidth": 10.0
+    }
+  ],
+  "Cameras": [
+    {
+      "SensorId": "CAMERA_1",
+      "SensorName": "Камера #1 (Гаражи)",
+      "PositionX": 397.13859910581226,
+      "PositionY": 458.5842026825635,
+      "DetectionRange": 100.0,
+      "FieldOfView": 90.0,
+      "ViewAngle": 258.0,
+      "NoiseLevel": 3.0
+    },
+    {
+      "SensorId": "CAMERA_2",
+      "SensorName": "Камера #2 (АКПП 1)",
+      "PositionX": 1295.0,
+      "PositionY": 782.0,
+      "DetectionRange": 80.0,
+      "FieldOfView": 90.0,
+      "ViewAngle": 90.0,
+      "NoiseLevel": 3.0
+    },
+    {
+      "SensorId": "CAMERA_3",
+      "SensorName": "Камера #3 (АКПП 2)",
+      "PositionX": 1135.0,
+      "PositionY": 782.0,
+      "DetectionRange": 80.0,
+      "FieldOfView": 90.0,
+      "ViewAngle": 90.0,
+      "NoiseLevel": 4.2
+    },
+    {
+      "SensorId": "CAMERA_4",
+      "SensorName": "Камера #4 (АКПП 4)",
+      "PositionX": 938.0,
+      "PositionY": 797.0,
+      "DetectionRange": 90.0,
+      "FieldOfView": 90.0,
+      "ViewAngle": 90.0,
+      "NoiseLevel": 2.0
+    },
+    {
+      "SensorId": "CAMERA_5",
+      "SensorName": "Камера #5 (АКПП 5)",
+      "PositionX": 555.0,
+      "PositionY": 797.0,
+      "DetectionRange": 90.0,
+      "FieldOfView": 90.0,
+      "ViewAngle": 114.0,
+      "NoiseLevel": 2.0
+    },
+    {
+      "SensorId": "CAMERA_6",
+      "SensorName": "Камера #6 (АКПП 6)",
+      "PositionX": 279.04619970193744,
+      "PositionY": 755.95380029806279,
+      "DetectionRange": 90.0,
+      "FieldOfView": 90.0,
+      "ViewAngle": 177.0,
+      "NoiseLevel": 2.0
+    },
+    {
+      "SensorId": "CAM_ED_1",
+      "SensorName": "Камера (ред.) 2",
+      "PositionX": 369.93166287015936,
+      "PositionY": 820.60706150341684,
+      "DetectionRange": 100.0,
+      "FieldOfView": 90.0,
+      "ViewAngle": 84.0,
+      "NoiseLevel": 3.0
+    }
+  ],
+  "Drones": [
+    {
+      "SensorId": "DRONE_1",
+      "SensorName": "БПЛА-Орлан-10",
+      "ScanRadius": 300.0,
+      "NoiseLevel": 2.5,
+      "PatrolRoute": [
+        {
+          "X": 223.44262295081978,
+          "Y": 200.55141579731753
+        },
+        {
+          "X": 1130.6289120715346,
+          "Y": 179.07898658718341
+        },
+        {
+          "X": 1336.250372578241,
+          "Y": 532.53949329359193
+        },
+        {
+          "X": 1421.6929955290609,
+          "Y": 772.49776453055165
+        },
+        {
+          "X": 1427.6602086438149,
+          "Y": 832.83159463487323
+        },
+        {
+          "X": 687.14456035767512,
+          "Y": 845.38599105812227
+        },
+        {
+          "X": 290.76304023845012,
+          "Y": 896.33681073025355
+        },
+        {
+          "X": 242.67362146050672,
+          "Y": 890.21460506706444
+        },
+        {
+          "X": 201.50521609538004,
+          "Y": 857.63040238450071
+        },
+        {
+          "X": 208.73621460506709,
+          "Y": 400.36065573770503
+        }
+      ]
+    }
+  ]
+}

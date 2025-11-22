@@ -1,0 +1,88 @@
+<UserControl x:Class="GuardSim.SensorPanelControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GuardSim"
+             Background="#161a1d" 
+             Foreground="#dbe3ea">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="14">
+            <!-- РАДАРЫ -->
+            <TextBlock Text="📡 РАДАРНЫЕ СИСТЕМЫ" FontSize="14" FontWeight="Bold" Foreground="#4dd0e1" Margin="0,0,0,5"/>
+            <ItemsControl x:Name="RadarItemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#1c2228" BorderBrush="#2a2f35" BorderThickness="1" CornerRadius="6" Margin="0,0,0,8">
+                            <StackPanel>
+                                <TextBlock Text="{Binding SensorName}" FontWeight="Bold" Foreground="#4dd0e1" Margin="5,5,0,0" FontSize="11"/>
+                                <StackPanel Orientation="Horizontal" Margin="5,4,0,0">
+                                    <TextBlock Text="Дальность:" Width="60" FontSize="11"/>
+                                    <TextBlock Text="{Binding DetectionRange, StringFormat={}{0:F0} м}" FontSize="11" Foreground="#90caf9"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5,2,0,0">
+                                    <TextBlock Text="Статус:" Width="60" FontSize="11"/>
+                                    <TextBlock Text="{Binding DetectionStatus}" FontSize="11" Foreground="Lime" Margin="0, 5"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- ВИДЕОКАМЕРЫ -->
+            <TextBlock Text="📷 ВИДЕОКАМЕРЫ" FontSize="14" FontWeight="Bold" Foreground="#ba68c8" Margin="0,0,0,5"/>
+            <ItemsControl x:Name="CameraItemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#1c2228" BorderBrush="#2a2f35" BorderThickness="1" CornerRadius="6" Margin="0,0,0,8">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                                    <TextBlock Text="{Binding SensorName}" FontWeight="Bold" Foreground="#ba68c8" Margin="5,5,0,0" FontSize="11" Width="120"/>
+                                    <Button Tag="{Binding SensorId}" Content="📹 Просмотр" Padding="6,3" FontSize="11" Background="#2a2f35" Foreground="#ba68c8" BorderThickness="1" BorderBrush="#ba68c8" Click="CameraViewBtn_Click"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5,4,0,0">
+                                    <TextBlock Text="Дальность:" Width="80" FontSize="11"/>
+                                    <TextBlock Text="{Binding DetectionRange, StringFormat={}{0:F0} м}" FontSize="11" Foreground="#90caf9"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5,2,0,5">
+                                    <TextBlock Text="ПЗ:" Width="80" FontSize="11"/>
+                                    <TextBlock Text="{Binding FieldOfView, StringFormat={}{0:F0}°}" FontSize="11" Foreground="#90caf9"/>
+                                </StackPanel>
+                                <!--<StackPanel Orientation="Horizontal" Margin="5,2,0,5">
+                                    <TextBlock Text="Статус:" Width="80" FontSize="11"/>
+                                    <TextBlock Text="{Binding IsActivated, Converter={StaticResource BoolToActiveConverter}}" FontSize="11" Foreground="#ba68c8"/>
+                                </StackPanel>-->
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- БПЛА -->
+            <TextBlock Text="🚁 БПЛА" FontSize="14" FontWeight="Bold" Foreground="#7cb342" Margin="0,0,0,10"/>
+            <ItemsControl x:Name="DroneItemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#1c2228" BorderBrush="#2a2f35" BorderThickness="1" CornerRadius="6" Margin="0,0,0,8" Padding="10">
+                            <StackPanel>
+                                <TextBlock Text="{Binding SensorName}" FontWeight="Bold" Foreground="#7cb342" FontSize="11"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                    <TextBlock Text="Радиус сканирования:" Width="120" FontSize="11"/>
+                                    <TextBlock Text="{Binding DetectionRange, StringFormat={}{0:F0} м}" FontSize="11" Foreground="#90caf9"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                    <TextBlock Text="Статус:" Width="120" FontSize="11"/>
+                                    <TextBlock Text="{Binding HasDetection, Converter={StaticResource BoolToStatusConverter}}" FontSize="11" Foreground="#7cb342"/>
+                                </StackPanel>
+                                <Button Content="👁 Просмотр"
+                                    Tag="{Binding SensorId}"
+                                    Click="DroneViewBtn_Click"
+                                    Padding="4" Margin="0,10,0,0"
+                                    Background="#2a2f35" Foreground="#dbe3ea" BorderBrush="#2a2f35"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

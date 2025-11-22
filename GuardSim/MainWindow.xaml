@@ -1,0 +1,361 @@
+<Window x:Class="GuardSim.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:GuardSim"
+        Title="GuardSim — система контроля периметра"
+        Width="1600" Height="900" Background="#101214">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="BtnFg"            Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="PrimaryBg"        Color="#2D7BFF"/>
+        <SolidColorBrush x:Key="PrimaryBgHover"   Color="#3E86FF"/>
+        <SolidColorBrush x:Key="PrimaryBgPressed" Color="#2563EB"/>
+
+        <SolidColorBrush x:Key="DangerBg"         Color="#EF4444"/>
+        <SolidColorBrush x:Key="DangerHover"      Color="#F05252"/>
+        <SolidColorBrush x:Key="DangerPressed"    Color="#DC2626"/>
+
+        <SolidColorBrush x:Key="AccentBg"         Color="#F59E0B"/>
+        <SolidColorBrush x:Key="AccentHover"      Color="#F6AD1A"/>
+        <SolidColorBrush x:Key="AccentPressed"    Color="#D97706"/>
+
+        <SolidColorBrush x:Key="SuccessBg"        Color="#10B981"/>
+        <SolidColorBrush x:Key="SuccessHover"     Color="#22C392"/>
+        <SolidColorBrush x:Key="SuccessPressed"   Color="#059669"/>
+
+        <!-- Основной стиль кнопки -->
+        <Style x:Key="AppButton" TargetType="Button">
+            <Setter Property="Foreground" Value="{StaticResource BtnFg}"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryBg}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="MinHeight" Value="36"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="10"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Margin="14,6,14,6"
+                                          RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource PrimaryBgHover}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource PrimaryBgPressed}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.55"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стили цветных кнопок -->
+        <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource AppButton}">
+            <Setter Property="Background" Value="{StaticResource DangerBg}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="14,6,14,6"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource DangerHover}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource DangerPressed}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.55"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="AccentButton" TargetType="Button" BasedOn="{StaticResource AppButton}">
+            <Setter Property="Background" Value="{StaticResource AccentBg}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="14,6,14,6"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource AccentHover}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource AccentPressed}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.55"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource AppButton}">
+            <Setter Property="Background" Value="{StaticResource SuccessBg}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="14,6,14,6"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource SuccessHover}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource SuccessPressed}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.55"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стиль для тумблера в стиле акцентной кнопки -->
+        <Style x:Key="AccentToggleButton" TargetType="ToggleButton">
+            <Setter Property="Foreground" Value="{StaticResource BtnFg}"/>
+            <Setter Property="Background" Value="{StaticResource AccentBg}"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="MinHeight" Value="36"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border x:Name="bd"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="10"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Margin="14,6,14,6"
+                                          RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource AccentHover}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource AccentPressed}"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="{StaticResource SuccessBg}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.55"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Стили для растянутых кнопок (для нижнего ряда) -->
+        <Style x:Key="StretchedAppButton" TargetType="Button" BasedOn="{StaticResource AppButton}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,4,0"/>
+        </Style>
+
+        <Style x:Key="StretchedSuccessButton" TargetType="Button" BasedOn="{StaticResource SuccessButton}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="4,0,0,0"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="340"/>
+            <ColumnDefinition Width="340"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Колонка 0: Карта -->
+        <Border Grid.Column="0" Margin="12" CornerRadius="10"
+            Background="#161a1d" BorderBrush="#2a2f35" BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="42"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Background="#1c2228">
+                    <TextBlock Text="🗺️ Карта объекта" Margin="12,0"
+                     VerticalAlignment="Center" Foreground="#dbe3ea" FontWeight="Bold"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Background="#0f1113">
+                    <Viewbox x:Name="FitBox"
+                   Stretch="Uniform"
+                   StretchDirection="DownOnly"
+                   ClipToBounds="True">
+                        <Canvas x:Name="Scene" Background="#0b0d0f">
+                            <Image x:Name="MapImage"
+                     Stretch="None"
+                     RenderOptions.BitmapScalingMode="HighQuality"
+                     Panel.ZIndex="0"/>
+                            <Canvas x:Name="Overlay" IsHitTestVisible="False" Panel.ZIndex="1"/>
+                        </Canvas>
+                    </Viewbox>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!-- Колонка 1: Панель управления -->
+        <Border Grid.Column="1" Margin="12" CornerRadius="10"
+            Background="#161a1d" BorderBrush="#2a2f35" BorderThickness="1">
+            <StackPanel Margin="14">
+                <TextBlock Text="⚙️ Управление симуляцией" Foreground="#dbe3ea"
+                   FontSize="16" FontWeight="Bold"/>
+
+                <Grid Margin="0,8,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Строка 1: Запуск и Стоп -->
+                    <StackPanel Orientation="Horizontal" Grid.Row="0">
+                        <Button x:Name="BtnStart"
+                                Style="{StaticResource SuccessButton}"
+                                Content="▶ Обычная симуляция"
+                                Click="BtnStart_Click"/>
+                        <Button x:Name="BtnStop"
+                                Style="{StaticResource DangerButton}"
+                                Content="■ Стоп"
+                                Click="BtnStop_Click"
+                                IsEnabled="False" Width="98"/>
+                    </StackPanel>
+
+                    <!-- Строка 2: Запуск симуляции -->
+                    <Button x:Name="BtnRunMultiSimulation"
+                            Grid.Row="1"
+                            Style="{StaticResource AccentButton}"
+                            Content="⚙ Запуск симуляции"
+                            Click="BtnRunMultiSimulation_Click"
+                            Cursor="Hand"
+                            Margin="0,4,0,0"/>
+
+                    <!-- Строка 3: Редактирование карты -->
+                    <ToggleButton x:Name="BtnEditMode"
+                          Grid.Row="2"
+                          Style="{StaticResource AccentToggleButton}"
+                          Content="🛠 Редактирование карты"
+                          Click="BtnEditMode_Click"
+                          Margin="0,4,0,0"/>
+
+                    <!-- Строка 4: Экспорт и Сохранение -->
+                    <Grid Grid.Row="3" Margin="0,4,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="BtnExport"
+                                Grid.Column="0"
+                                Style="{StaticResource StretchedAppButton}"
+                                Content="⬇ Экспорт"
+                                Click="BtnExport_Click"/>
+
+                        <Button x:Name="BtnSaveConfig"
+                                Grid.Column="1"
+                                Style="{StaticResource StretchedSuccessButton}"
+                                Content="💾 Сохранить"
+                                Click="BtnSaveConfig_Click"
+                                IsEnabled="{Binding ElementName=BtnEditMode, Path=IsChecked}"/>
+                    </Grid>
+                </Grid>
+
+                <Separator Margin="0,12,0,12"/>
+
+                <TextBlock Text="⏱️ Таймер симуляции" Foreground="#dbe3ea" FontSize="12" FontWeight="Bold"/>
+                <TextBlock x:Name="TimerText" Text="00:00:00" Foreground="#4dd0e1" 
+                          FontSize="20" Margin="0,4,0,0" FontFamily="Courier New"/>
+
+                <Separator Margin="0,12,0,12"/>
+
+                <TextBlock Text="📊 Статистика" Foreground="#dbe3ea" FontSize="14" FontWeight="Bold"/>
+                <StackPanel Margin="0,8,0,0">
+                    <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                        <TextBlock Text="Обнаружений:" Width="120" FontSize="12" Foreground="#a0a0a0"/>
+                        <TextBlock x:Name="DetectionCountText" Text="0" Foreground="#4dd0e1" FontSize="12" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                        <TextBlock Text="Активных радаров:" Width="120" FontSize="12" Foreground="#a0a0a0"/>
+                        <TextBlock x:Name="ActiveRadarsText" Text="0" Foreground="#4dd0e1" FontSize="12" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                        <TextBlock Text="Нарушитель:" Width="120" FontSize="12" Foreground="#a0a0a0"/>
+                        <TextBlock x:Name="IntruderStatusText" Text="активен" Foreground="#ff5252" FontSize="12" FontWeight="Bold"/>
+                    </StackPanel>
+                </StackPanel>
+                <Separator Margin="0,12,0,12"/>
+
+                <TextBlock Text="🎯 ПОСЛЕДНИЕ ОБНАРУЖЕНИЯ" FontSize="14" FontWeight="Bold" Foreground="#ffb74d" Margin="0,0,0,8"/>
+
+                <ListBox x:Name="DetectionsListBox"
+                        ItemsSource="{Binding SensorSimulator.AllDetections, RelativeSource={RelativeSource AncestorType=Window}}"
+                        MaxHeight="250"
+                        Background="#0f1113" BorderBrush="#2a2f35" Foreground="#ffffff"
+                        FontSize="10"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        Loaded="DetectionsListBox_Loaded">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="4,2" Background="#1c2228" Margin="0,1">
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} [{1}] @ ({2:F0}, {3:F0})">
+                                            <Binding Path="Timestamp" StringFormat="HH:mm:ss.fff"/>
+                                            <Binding Path="SensorName"/>
+                                            <Binding Path="MeasuredPosition.X"/>
+                                            <Binding Path="MeasuredPosition.Y"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Border>
+
+        <!-- Колонка 2: Панель сенсоров -->
+        <Border Grid.Column="2" Margin="12" CornerRadius="10"
+            Background="#161a1d" BorderBrush="#2a2f35" BorderThickness="1">
+            <local:SensorPanelControl
+                SensorSimulator="{Binding SensorSimulator, RelativeSource={RelativeSource AncestorType=Window}}"
+                CameraViewRequested="SensorPanel_CameraViewRequested"
+                DroneViewRequested="SensorPanel_DroneViewRequested" />
+        </Border>
+    </Grid>
+</Window>

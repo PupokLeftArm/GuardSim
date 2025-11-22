@@ -1,0 +1,120 @@
+{
+  "Intruders": 2000,
+  "Radars": [
+    {
+      "SensorId": "RADAR_1",
+      "SensorName": "Радар #1 (СЗ)",
+      "PositionX": 350,
+      "PositionY": 450,
+      "DetectionRange": 200,
+      "NoiseLevel": 2.0
+    },
+    {
+      "SensorId": "RADAR_2",
+      "SensorName": "Радар #2 (СВ)",
+      "PositionX": 1210,
+      "PositionY": 450,
+      "DetectionRange": 250,
+      "NoiseLevel": 2.0
+    },
+    {
+      "SensorId": "RADAR_3",
+      "SensorName": "Радар #3 (Ю)",
+      "PositionX": 700,
+      "PositionY": 787,
+      "DetectionRange": 190,
+      "NoiseLevel": 2.5
+    },
+    {
+      "SensorId": "RADAR_4",
+      "SensorName": "Радар #4 (С)",
+      "PositionX": 750,
+      "PositionY": 300,
+      "DetectionRange": 180,
+      "NoiseLevel": 3.0
+    }
+  ],
+  "Cameras": [
+    {
+      "SensorId": "CAMERA_1",
+      "SensorName": "Камера #1 (Гаражи)",
+      "PositionX": 400,
+      "PositionY": 450,
+      "DetectionRange": 100,
+      "FieldOfView": 270,
+      "NoiseLevel": 3.0
+    },
+    {
+      "SensorId": "CAMERA_2",
+      "SensorName": "Камера #2 (АКПП 1)",
+      "PositionX": 1295,
+      "PositionY": 782,
+      "DetectionRange": 80,
+      "FieldOfView": 90,
+      "NoiseLevel": 3.0
+    },
+    {
+      "SensorId": "CAMERA_3",
+      "SensorName": "Камера #3 (АКПП 2)",
+      "PositionX": 1135,
+      "PositionY": 782,
+      "DetectionRange": 80,
+      "FieldOfView": 80,
+      "NoiseLevel": 4.2
+    },
+    {
+      "SensorId": "CAMERA_4",
+      "SensorName": "Камера #4 (АКПП 4)",
+      "PositionX": 938,
+      "PositionY": 797,
+      "DetectionRange": 90,
+      "FieldOfView": 100,
+      "NoiseLevel": 2.0
+    },
+    {
+      "SensorId": "CAMERA_5",
+      "SensorName": "Камера #5 (АКПП 5)",
+      "PositionX": 555,
+      "PositionY": 797,
+      "DetectionRange": 90,
+      "FieldOfView": 120,
+      "NoiseLevel": 2.0
+    },
+    {
+      "SensorId": "CAMERA_6",
+      "SensorName": "Камера #6 (АКПП 6)",
+      "PositionX": 280,
+      "PositionY": 755,
+      "DetectionRange": 90,
+      "FieldOfView": 180,
+      "NoiseLevel": 2.0
+    }
+  ],
+  "Drones": [
+    {
+      "SensorId": "DRONE_1",
+      "SensorName": "БПЛА-Орлан-10",
+      "ScanRadius": 300,
+      "Speed": 50,
+      "NoiseLevel": 2.5,
+      "PatrolRoute": [
+        {
+          "X": 150,
+          "Y": 150
+        },
+        {
+          "X": 1400,
+          "Y": 150
+        },
+        {
+          "X": 1400,
+          "Y": 850
+        },
+        {
+          "X": 150,
+          "Y": 850
+        }
+      ]
+    }
+  ]
+}

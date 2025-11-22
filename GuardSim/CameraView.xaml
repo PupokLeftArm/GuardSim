@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window x:Class="GuardSim.CameraViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Просмотр камеры" Width="600" Height="500"
+        Background="#101214" Foreground="#dbe3ea"
+        WindowStartupLocation="CenterScreen">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <Grid Grid.Row="0" Background="#1c2228">
+            <TextBlock x:Name="CameraNameText" Text="Камера" Margin="12,0"
+                      VerticalAlignment="Center" Foreground="#dbe3ea" FontWeight="Bold" FontSize="14"/>
+        </Grid>
+
+        <!-- Видеопоток -->
+        <Border Grid.Row="1" Background="#0b0d0f" Margin="12" CornerRadius="6" BorderBrush="#2a2f35" BorderThickness="1">
+            <Grid>
+                <Canvas x:Name="VideoCanvas" Background="#000000"/>
+                
+                <!-- Оверлей с информацией -->
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="12"
+           Background="#CC000000">
+                    <TextBlock x:Name="TimestampText" Text="00:00:00" FontSize="12" Foreground="#ffffff"/>
+                    <TextBlock x:Name="PositionText" Text="X: 0, Y: 0" FontSize="12" Foreground="#ffffff" Margin="0,2,0,0"/>
+                    <TextBlock x:Name="ConfidenceText" Text="Уверенность: 0%" FontSize="12" Foreground="#ffffff" Margin="0,2,0,0"/>
+                </StackPanel>
+
+                <!-- Статус обнаружения -->
+                <TextBlock x:Name="DetectionStatusText" Text="⚫ Нет обнаружения" 
+                          VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="12"
+                          Foreground="#ff5252" FontWeight="Bold" FontSize="12"
+                          Background="#66000000" Padding="8"/>
+            </Grid>
+        </Border>
+
+        <!-- Панель управления -->
+        <Grid Grid.Row="2" Background="#1c2228" Margin="0">
+            <StackPanel Orientation="Horizontal" Margin="12" VerticalAlignment="Center">
+                <Button x:Name="CloseBtn" Content="Закрыть" Width="100" Padding="8,4"
+                       Background="#2a2f35" Foreground="#dbe3ea" BorderBrush="#2a2f35"
+                       Click="CloseBtn_Click"/>
+                
+                <TextBlock x:Name="StreamStatusText" Text="🟢 Поток активен" Margin="20,0,0,0"
+                          VerticalAlignment="Center" Foreground="#4dd0e1" FontSize="11"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
